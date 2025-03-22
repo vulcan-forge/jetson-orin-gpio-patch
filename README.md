@@ -2,6 +2,31 @@
 Addressing GPIO issue in JetPack 6.2
 # TESTING - EXPLORING - WIP
 
+## Test Example
+The example test script should product 3.3V on pin 7. To install the Jetson.GPIO library:
+```bash
+sudo apt update
+sudo apt install python3 python3-pip -y
+sudo pip3 install Jetson.GPIO
+```
+Make sure the user is in the gpio group:
+```bash
+sudo usermod -a -G gpio $USER
+```
+Reboot or logout/login to make the changes take effect.
+```bash
+sudo reboot
+```
+You can test to make sure the Jetson.GPIO library loads:
+```bash
+python3 -c "import Jetson.GPIO; print(Jetson.GPIO.__version__)"
+```
+You are then ready to run the example:
+```bash
+python example.py
+```
+
+
 ## Overall Purpose of the Patch
 This patch improves the Tegra pinctrl driver’s handling of GPIO pin multiplexing by:
 * Preserving Original Pin State: Previously, when a GPIO was requested, the sfsel bit was cleared (forcing GPIO mode), and when freed, it was always set (forcing special function mode). Now, the driver remembers the original state and restores it when the GPIO is freed.
