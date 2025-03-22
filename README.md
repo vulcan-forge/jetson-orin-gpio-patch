@@ -9,7 +9,7 @@ sudo apt update
 sudo apt install python3 python3-pip -y
 sudo pip3 install Jetson.GPIO
 ```
-Make sure the user is in the gpio group:
+You can use sudo when calling the scripts, or put the user in the gpio group:
 ```bash
 sudo usermod -a -G gpio $USER
 ```
