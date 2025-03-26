@@ -1,5 +1,5 @@
 # jetson-orin-gpio-patch
-Addressing GPIO issue in JetPack 6.2
+Addressing GPIO issue in JetPack 6.2 on NVIDIA Jetson Orin Super Nano Developer Kit
 # TESTING - EXPLORING - WIP
 
 In the default JetPack 6.2 distribution, GPIO pins are not marked as bidirectional. In order to change that, here is an example device tree overlay file. This is for Pin 7, which is GPIO9/AUD_MCLK. This pin translates to Linux name soc_gpio59_pac6. In order to compile the .dts file, copy it to the /boot directory, and then use jetson-io.py to add it to the /boot/extlinux/extlinux.conf file:
