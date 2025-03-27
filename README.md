@@ -16,7 +16,7 @@ The example test script should product 3.3V on pin 7. To install the Jetson.GPIO
 ```bash
 sudo apt update
 sudo apt install python3 python3-pip -y
-sudo pip3 install Jetson.GPIO
+sudo pip3 install --upgrade Jetson.GPIO
 ```
 You can use sudo when calling the scripts, or put the user in the gpio group:
 ```bash
