@@ -1,8 +1,8 @@
 # jetson-orin-gpio-patch
 Addressing GPIO issue in JetPack 6.2 on NVIDIA Jetson Orin Super Nano Developer Kit
-# TESTING - EXPLORING - WIP
 
-In the default JetPack 6.2 distribution, GPIO pins are not marked as bidirectional. In order to change that, here is an example device tree overlay file. This is for Pin 7, which is GPIO9/AUD_MCLK. This pin translates to Linux name soc_gpio59_pac6. In order to compile the .dts file, copy it to the /boot directory, and then use jetson-io.py to add it to the /boot/extlinux/extlinux.conf file:
+## Putting the Output into General Purpose Input/Output
+In the default JetPack 6.2 distribution, GPIO pins are not marked as bidirectional. In order to change that, here is an example device tree overlay file. This is for Pin 7, which is GPIO9/AUD_MCLK. This pin translates to Linux name soc_gpio59_pac6. In order to use the overlay, compile the .dts file, copy the result to the /boot directory, and then use jetson-io.py to add it to the /boot/extlinux/extlinux.conf file:
 ```bash
 dtc -O dtb -o pin7_as_gpio.dtbo pin7_as_gpio.dts 
 sudo cp pin7_as_gpio.dtbo /boot
@@ -16,7 +16,7 @@ The example test script should product 3.3V on pin 7. To install the Jetson.GPIO
 ```bash
 sudo apt update
 sudo apt install python3 python3-pip -y
-sudo pip3 install --upgrade Jetson.GPIO
+sudo pip install --upgrade Jetson.GPIO
 ```
 You can use sudo when calling the scripts, or put the user in the gpio group:
 ```bash
@@ -42,4 +42,9 @@ This patch improves the Tegra pinctrl driver’s handling of GPIO pin multiplexi
 * Avoiding Unnecessary Changes: The conditional restoration of the sfsel bit prevents unnecessary register writes, improving efficiency and reducing side effects.
 
 Pins are shared between GPIO and special functions (e.g., I2C, SPI), these changes ensure proper state management when switching between modes.
+
+# Notes
+## Initial Release - March, 2025
+* Tested on NVIDIA Jetson Orin Nano Super Developer Kit
+* JetPack 6.2
 
