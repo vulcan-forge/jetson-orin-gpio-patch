@@ -10,7 +10,7 @@ sudo /opt/nvidia/jetson-io/jetson-io.py
 ```
 
 ## Test examples
-You will need to reboot for the changes to take effect. There are sample programs taken from the Jetson.GPIO library, which use Pin 7 as an output and Pin 15 as in input.
+You will need to reboot for the changes to take effect. There are sample programs taken from the Jetson.GPIO library in the examples directory, which use Pin 7 as an output and Pin 15 as in input.
 
 The example test script should product 3.3V on pin 7. To install the Jetson.GPIO library:
 ```bash
